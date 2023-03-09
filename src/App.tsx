@@ -13,8 +13,9 @@ function App() {
       p={"lg"}
       align={"center"}
       w={"100vw"}
+      bg={"gray"}
       direction={"column"}
-      h={"100vh"}
+      h={"100%"}
     >
       <Connector brokerUrl="wss://broker.emqx.io:8084/mqtt">
         <Header />
