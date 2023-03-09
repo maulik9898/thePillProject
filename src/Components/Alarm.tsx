@@ -38,19 +38,23 @@ const Alarm = ({ alarmId }: { alarmId: string }) => {
     const data = message?.message?.toString().split(" ");
     if (message?.message?.toString() != payload) {
       if (data) {
-        const t = data[1] + ":" + data[0];
+        const t = data[2] + ":" + data[1];
         console.log(t);
-        const date = dayjs("1/1/1 " + t).format("hh:mm A");
-        console.log(date);
-        const [time, a] = date.split(" ");
-        const [h, m] = time.split(":");
-        setHour(h);
-        setMinute(m);
-        setAmpm(a);
-        if (data[4] == "*") {
-          setWeeks(["0", "1", "2", "3", "4", "5", "6"]);
-        } else {
-          setWeeks(data[4].split(","));
+        try {
+          const date = dayjs("1/1/1 " + t).format("hh:mm A");
+          console.log(date);
+          const [time, a] = date.split(" ");
+          const [h, m] = time.split(":");
+          setHour(h);
+          setMinute(m);
+          setAmpm(a);
+          if (data[5] == "*") {
+            setWeeks(["0", "1", "2", "3", "4", "5", "6"]);
+          } else {
+            setWeeks(data[5].split(","));
+          }
+        } catch (error) {
+            console.log(error);
         }
       }
     }
@@ -75,7 +79,7 @@ const Alarm = ({ alarmId }: { alarmId: string }) => {
     if (days == "0,1,2,3,4,5,6") {
       days = "*";
     }
-    const payload = `${m} ${h} * * ${days}`;
+    const payload = `01 ${m} ${h} * * ${days}`;
     setPayload(payload);
   };
 
@@ -211,7 +215,13 @@ const Alarm = ({ alarmId }: { alarmId: string }) => {
           </Chip>
         </Flex>
       </Chip.Group>
-      <Button loading={loading} onClick={handleOnClick} color={"green"} fullWidth mt={"sm"}>
+      <Button
+        loading={loading}
+        onClick={handleOnClick}
+        color={"green"}
+        fullWidth
+        mt={"sm"}
+      >
         Save
       </Button>
     </Paper>

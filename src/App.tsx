@@ -16,7 +16,7 @@ function App() {
       direction={"column"}
       h={"100vh"}
     >
-      <Connector brokerUrl="ws://broker.mqttdashboard.com:8000/mqtt">
+      <Connector brokerUrl="wss://broker.emqx.io:8084/mqtt">
         <Header />
         <Pills />
         <Alarms />
