@@ -12,30 +12,32 @@ export default defineConfig({
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
       devOptions: {
         enabled: true,
+
         /* other options */
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
       manifest: {
         name: "ThePillProject",
         short_name: "pillProject",
+
         icons: [
           {
-            src: "/android-chrome-192x192.png",
+            src: "android-chrome-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/android-chrome-512x512.png",
+            src: "android-chrome-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
         ],
         theme_color: "#ffffff",
         background_color: "#ffffff",
-        scope: "/thePillProject",
-        display: "standalone"
+
+        display: "standalone",
       },
     }),
   ],
