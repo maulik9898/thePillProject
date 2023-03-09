@@ -10,6 +10,13 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
+      devOptions: {
+        enabled: true,
+        /* other options */
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+      },
       manifest: {
         name: "ThePillProject",
         short_name: "pillProject",
@@ -27,7 +34,8 @@ export default defineConfig({
         ],
         theme_color: "#ffffff",
         background_color: "#ffffff",
-        display: "standalone",
+        scope: "/thePillProject",
+        display: "standalone"
       },
     }),
   ],
