@@ -3,7 +3,7 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import { connect, MqttClient } from "precompiled-mqtt";
 
 import MqttContext from "./Context";
-import { Error, ConnectorProps, IMqttContext } from "./types";
+import { Error, ConnectorProps, IMqttContext, connectionStatus } from "./types";
 
 export default function Connector({
   children,
@@ -13,7 +13,7 @@ export default function Connector({
 }: ConnectorProps) {
   // Using a ref rather than relying on state because it is synchronous
   const clientValid = useRef(false);
-  const [connectionStatus, setStatus] = useState<string | Error>("Offline");
+  const [connectionStatus, setStatus] = useState<connectionStatus>("Offline");
   const [client, setClient] = useState<MqttClient | null>(null);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function Connector({
       });
       mqtt.on("error", (err) => {
         console.log(`Connection error: ${err}`);
-        setStatus(err.message);
+        setStatus(err);
       });
       mqtt.on("offline", () => {
         console.debug("on offline");
