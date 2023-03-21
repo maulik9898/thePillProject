@@ -54,7 +54,7 @@ const Header = () => {
           Alex Nandy
         </Text>
         <Avatar color="cyan" radius="xl">
-          MP
+          AN
         </Avatar>
       </Flex>
 
