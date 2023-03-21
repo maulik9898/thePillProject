@@ -51,7 +51,7 @@ const Header = () => {
       /> */}
       <Flex w={"100%"} gap={"sm"} align={"baseline"} justify={"flex-end"}>
         <Text fw={500} size="md">
-          Maulik Patel
+          Alex Nandy
         </Text>
         <Avatar color="cyan" radius="xl">
           MP
